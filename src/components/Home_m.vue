@@ -4,7 +4,6 @@
       .left-view
         img(src="../assets/pcimg/Logo.png")
       .right-view
-        el-button.develop(type="text" @click="toLink('https://developer.bitapp.net/')") {{$t('开发者站')}}
         el-dropdown.language(trigger="click" @command="handleCommand" @visible-change="dropShow")
           el-button.language-text(type="text") {{language}}
             i.icon(:class="dropshow?'el-icon-caret-bottom':'el-icon-caret-top'")
@@ -20,19 +19,16 @@
             .info {{$t('PureWallet Info')}}
             img.info-img(src="../assets/mimg/3picture.png")
             .product-info
-              .product-item(@click="toLink('https://itunes.apple.com/ng/app/pure-wallet-eth-bch-iost/id1465052180')")
-                img.img(src="../assets/mimg/apple_hover.png") 
-                .name Apple Store
+              .product-item(@click="toLink('https://play.google.com/store/apps/details?id=pro.bitapp.android&hl=en')")
+                img.img(src="../assets/mimg/google_play_hover.png") 
+                .name Google Play
               .product-item(@click="toLink('https://fir.im/pureWallet')")
                 img.img(src="../assets/mimg/Android_hover.png")
                 .name Android APK
             .product-info
-              .product-item(@click="toLink('https://play.google.com/store/apps/details?id=pro.bitapp.android&hl=en')")
-                img.img(src="../assets/mimg/google_play_hover.png") 
-                .name Google Play
-              .product-item(@click="toLink('https://chrome.google.com/webstore/detail/fihkakfobkmkjojpchpfgcmhfjnmnfpi/publish-accepted?authuser=0&hl=en')")
-                img.img(src="../assets/mimg/chrome_hover.png")
-                .name {{$t('Chrome插件')}}
+              .product-item(@click="toLink('https://itunes.apple.com/ng/app/pure-wallet-eth-bch-iost/id1465052180')")
+                img.img(src="../assets/mimg/apple_hover.png") 
+                .name Apple Store
         .link-info
           .link
             .title {{$t('合作伙伴')}}
@@ -46,6 +42,11 @@
                 img.img(src="../assets/mimg/viabtc.png")
               .info-view(@click="toLink('https://bch.club/')")
                 img.img(src="../assets/mimg/BCH_Club.png")
+            .link-view
+              .info-view(@click="toLink('https://iost.io/')")
+                img.img(src="../assets/mimg/logo_iost.svg")
+              .info-view(@click="toLink('https://iostabc.com/')")
+                img.img(src="../assets/mimg/iostabc.png")
     .footer-view
       .footer-info
         .email-view
@@ -54,7 +55,7 @@
             .text-email support@purewallet.org
           .cooperation
             .text {{$t('商务合作')}}
-            .text-email bd@purewallet.org
+            .text-email support@purewallet.org
         .contact-way
           .text {{$t('联系我们')}}
           .way-view

@@ -5,7 +5,6 @@
         .left-view
           img(src="../assets/pcimg/Logo.png")
         .right-view
-          el-button.develop(type="text" @click="toLink('https://developer.bitapp.net/')") {{$t('开发者站')}}
           el-dropdown.language(trigger="click" @command="handleCommand" @visible-change="dropShow")
             el-button.language-text(type="text") {{language}}
               i.icon(:class="dropshow?'el-icon-caret-bottom':'el-icon-caret-top'")
@@ -40,7 +39,7 @@
             p support@purewallet.org
           .cooperation
             p {{$t('商务合作')}}
-            p bd@purewallet.org
+            p support@purewallet.org
           .contact
             p {{$t('联系我们')}}
             .contact-way
@@ -65,10 +64,10 @@ export default {
       language: /zh/i.test(sessionStorage.getItem('language'))? '中文':'English',
       productInfo:[
         {
-          img: require('../assets/pcimg/apple.png'),
-          name:'Apple Store',
-          index:0,
-          link:'https://itunes.apple.com/ng/app/pure-wallet-eth-bch-iost/id1465052180'
+          img:require('../assets/pcimg/google_play.png'),
+          name:'Google Play',
+          index:2,
+          link:'https://play.google.com/store/apps/details?id=pro.bitapp.android&hl=en'
         },
         {
           img: require('../assets/pcimg/Android.png'),
@@ -77,16 +76,10 @@ export default {
           link:'https://fir.im/pureWallet'
         },
         {
-          img:require('../assets/pcimg/google_play.png'),
-          name:'Google Play',
-          index:2,
-          link:'https://play.google.com/store/apps/details?id=pro.bitapp.android&hl=en'
-        },
-        {
-          img: require('../assets/pcimg/chrome.png'),
-          name: this.$t('Chrome插件'),
-          index:3,
-          link:'https://chrome.google.com/webstore/detail/fihkakfobkmkjojpchpfgcmhfjnmnfpi/publish-accepted?authuser=0&hl=en'
+          img: require('../assets/pcimg/apple.png'),
+          name:'Apple Store',
+          index:0,
+          link:'https://itunes.apple.com/ng/app/pure-wallet-eth-bch-iost/id1465052180'
         }
       ],
       linkInfo: [
@@ -105,6 +98,14 @@ export default {
         {
           img: require('../assets/pcimg/BCH_Club.png'),
           link: 'https://bch.club/'
+        },
+        {
+          img: require('../assets/pcimg/logo_iost.svg'),
+          link: 'https://iost.io/'
+        },
+        {
+          img: require('../assets/pcimg/iostabc.png'),
+          link: 'https://iostabc.com/'
         }
       ],
       navBarFixed:false
@@ -286,6 +287,7 @@ export default {
             width 640px
             .info-img
               width 640px
+              padding-left 80px
       .linkbg
         height 280px
         width 100%
