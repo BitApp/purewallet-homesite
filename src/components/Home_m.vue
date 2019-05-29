@@ -20,7 +20,7 @@
             .info {{$t('PureWallet Info')}}
             img.info-img(src="../assets/mimg/3picture.png")
             .product-info
-              .product-item(@click="toLink('https://fir.im/pureios?release_id=5c6ba960548b7a26a01aba12')")
+              .product-item(@click="toLink('https://itunes.apple.com/ng/app/pure-wallet-eth-bch-iost/id1465052180')")
                 img.img(src="../assets/mimg/apple_hover.png") 
                 .name Apple Store
               .product-item(@click="toLink('https://fir.im/pureWallet')")

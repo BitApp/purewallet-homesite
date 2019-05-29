@@ -68,7 +68,7 @@ export default {
           img: require('../assets/pcimg/apple.png'),
           name:'Apple Store',
           index:0,
-          link:'https://fir.im/pureios?release_id=5c6ba960548b7a26a01aba12'
+          link:'https://itunes.apple.com/ng/app/pure-wallet-eth-bch-iost/id1465052180'
         },
         {
           img: require('../assets/pcimg/Android.png'),
