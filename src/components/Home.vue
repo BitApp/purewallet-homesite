@@ -11,6 +11,8 @@
             el-dropdown-menu(slot="dropdown")
               el-dropdown-item(command="zh" ) 中文
               el-dropdown-item(command="en" divided) English
+          img.voice-control(id="voice" src="../assets/pcimg/voice.svg" style="" width=14 @click="mute")
+          img.voice-control(id="mute" src="../assets/pcimg/mute.svg" style="display:none" width=14 @click="voice")
     .center-content
       .center-info
         .mainbg
@@ -24,6 +26,9 @@
                   .img(:class=`"product-img" + item.index `)
                   .name {{item.name}}
             .right
+              video.video(width=240,autoplay,loop id="video")
+                source(src="https://www.purewallet.org/static/howto.mp4?1" type="video/mp4")
+                Your browser does not support the video tag.
               img.info-img(src="../assets/pcimg/3picture.png")
         .linkbg
           .link
@@ -136,6 +141,16 @@ export default {
       }
       sessionStorage.setItem('language',command)
       window.location.reload()
+    },
+    mute(){
+      document.getElementById('mute').style.display = ''
+      document.getElementById('voice').style.display = 'none'
+      document.getElementById('video').muted = true
+    },
+    voice(){
+      document.getElementById('voice').style.display = ''
+      document.getElementById('mute').style.display = 'none'
+      document.getElementById('video').muted = false
     }
   }
 }
@@ -185,6 +200,8 @@ export default {
         width 254px
         justify-content space-between
         font-size 14px
+        .voice-control
+          cursor pointer
         .develop
           height 70px
           color #52525C
@@ -286,8 +303,17 @@ export default {
           .right
             width 640px
             .info-img
-              width 640px
+              width 660px
               padding-left 80px
+              margin-top -50px
+              z-index 5
+              position relative
+            .video
+              position absolute
+              margin-left 389px
+              margin-top 38px
+              width 240px
+              border-radius 30px
       .linkbg
         height 280px
         width 100%

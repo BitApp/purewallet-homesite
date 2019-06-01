@@ -18,6 +18,10 @@
               .tips {{$t('纯粹、极致的多链钱包')}}
             .info {{$t('PureWallet Info')}}
             img.info-img(src="../assets/mimg/3picture.png")
+            div(style="text-align:center")
+              video.video(width=240,controls,loop)
+                  source(src="https://www.purewallet.org/static/howto.mp4?1" type="video/mp4")
+                  Your browser does not support the video tag.
             .product-info
               .product-item(@click="toLink('https://play.google.com/store/apps/details?id=pro.bitapp.android&hl=en')")
                 img.img(src="../assets/mimg/google_play_hover.png") 
@@ -185,8 +189,11 @@ export default {
             font-size 14px
             line-height 22px
           .info-img
-            width 100%
+            width 420px
             margin-top 45px
+            margin-left -60px
+          .video
+            width 240px
           .product-info
             width 100%
             margin-top 40px
