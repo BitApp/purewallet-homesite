@@ -25,9 +25,12 @@
                 .product-item(v-for="(item,index) in productInfo" :key="index" @click="toLink(item.link)")
                   .img(:class=`"product-img" + item.index `)
                   .name {{item.name}}
+                a.product-item(target="_blank" href="https://help.purewallet.org/zh/getstarted/#ios-purewallet%E5%AE%89%E8%A3%85%E6%8C%87%E5%BC%95") 
+                  .img(class="product-img0")
+                  .name {{$t('国内iOS安装指引')}}
             .right
               video.video(width=240,autoplay,loop id="video")
-                source(src="https://www.purewallet.org/static/howto.mp4?1" type="video/mp4")
+                source(src="https://www.purewallet.org/static/howto.mp4" type="video/mp4")
                 Your browser does not support the video tag.
               img.info-img(src="../assets/pcimg/3picture.png")
         .linkbg

@@ -34,6 +34,9 @@
               .product-item(@click="toLink('https://itunes.apple.com/ng/app/pure-wallet-eth-bch-iost/id1465052180')")
                 img.img(src="../assets/mimg/apple_hover.png") 
                 .name Apple Store
+              a.product-item(target="_blank" href="https://help.purewallet.org/zh/getstarted/#ios-purewallet%E5%AE%89%E8%A3%85%E6%8C%87%E5%BC%95") 
+                    .img(class="product-img0")
+                    .name {{$t('国内iOS安装指引')}}
         .link-info
           .link
             .title {{$t('合作伙伴')}}
