@@ -79,7 +79,7 @@ export default {
     return {
       visible: false,
       dropshow: false,
-      dappshow: true,
+      dappshow: false,
       language: /zh/i.test(sessionStorage.getItem('language'))? '中文':'English',
       productInfo:[
         {
