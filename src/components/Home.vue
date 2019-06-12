@@ -3,8 +3,9 @@
     .header-view(:class="navBarFixed == true ? 'navBarWrap' :''")
       .top-view
         .left-view
-          img(src="../assets/pcimg/Logo.png")
+          img(src="../assets/pcimg/Logo.png" @click="dappshow = false")
         .right-view
+          el-button.dapp-btn(type="text" @click="dappshow = true") {{$t('DApp上架申请')}}
           el-dropdown.language(trigger="click" @command="handleCommand" @visible-change="dropShow")
             el-button.language-text(type="text") {{language}}
               i.icon(:class="dropshow?'el-icon-caret-bottom':'el-icon-caret-top'")
@@ -14,7 +15,7 @@
           img.voice-control(id="voice" src="../assets/pcimg/voice.svg" style="" width=14 @click="mute")
           img.voice-control(id="mute" src="../assets/pcimg/mute.svg" style="display:none" width=14 @click="voice")
     .center-content
-      .center-info
+      .center-info(v-if="!dappshow")
         .mainbg
           .maincontent
             .left
@@ -39,6 +40,15 @@
             .link-view
               .info-view(v-for="(item,index) in linkInfo" :key="index" @click="toLink(item.link)")
                 img.img(:src="item.img")
+      .dapp-content(v-else)
+        .dapp-bg
+          .dapp-title {{$t('DApp上架申请')}}
+          .dapp-download
+            a.download-a(href="./static/iostabc-dapp-request.xlsx" download="iostabc-dapp-request.xlsx") {{$t('下载申请模板')}}
+          .dapp-tips 
+            span {{$t('如果您希望在PureWallet展示您的 DApp，下载并填写申请模板，发邮件到')}}
+            a.emailto(href="mailto:support@iostabc.com") support@iostabc.com
+            span {{$t('联系我们_1')}}
     .footer 
       .foot-content
         .contact-view
@@ -69,6 +79,7 @@ export default {
     return {
       visible: false,
       dropshow: false,
+      dappshow: true,
       language: /zh/i.test(sessionStorage.getItem('language'))? '中文':'English',
       productInfo:[
         {
@@ -145,6 +156,9 @@ export default {
       sessionStorage.setItem('language',command)
       window.location.reload()
     },
+    dapp(){
+
+    },
     mute(){
       document.getElementById('mute').style.display = ''
       document.getElementById('voice').style.display = 'none'
@@ -198,11 +212,14 @@ export default {
         align-items center
         >img 
           height 48px
+          cursor pointer
       .right-view
         display flex
         width 254px
         justify-content space-between
         font-size 14px
+        .dapp-btn
+          color #6066C0
         .voice-control
           cursor pointer
         .develop
@@ -350,6 +367,36 @@ export default {
               box-shadow 0 0 8px 0 rgba(96,102,192,0.20)
               border-radius 12px
               cursor pointer
+  .dapp-content  
+    width 100%
+    height  100%
+    .dapp-bg
+      height 100%
+      display flex
+      justify-content center 
+      flex-direction column
+      background-image url('../assets/pcimg/download_bg.png')
+      background-size 100% 100%
+      background-repeat no-repeat
+      background-position bottom  
+      color #FFF  
+      .dapp-title
+        margin-bottom 30px
+        font-size 36px  
+      .dapp-download
+        .download-a
+          color #52525C
+          text-decoration none 
+          background-color #FFF
+          line-height 40px
+          padding 10px 40px
+          border-radius 20px
+      .dapp-tips
+        margin-top 20px
+        font-size 14px
+        .emailto
+          color #409EFF
+          text-decoration none 
   .footer
     background-color #52525C
     .foot-content
