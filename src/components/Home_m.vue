@@ -60,12 +60,12 @@
         .dapp-bg
           .dapp-title {{$t('DApp上架申请')}}
           .dapp-download
-            a.download-a(href="./static/iostabc-dapp-request.xlsx" download="iostabc-dapp-request.xlsx") {{$t('下载申请模板')}}
+            a.download-a(href="./static/purewallet-dapp-request.xlsx" download="purewallet-dapp-request.xlsx") {{$t('下载申请模板')}}
           .dapp-tips 
             div {{$t('如果您希望在PureWallet展示您的 DApp')}}
             div
               span {{$t('下载并填写申请模板，发邮件到')}}
-              a.emailto(href="mailto:support@iostabc.com") support@iostabc.com
+              a.emailto(href="mailto:support@purewallet.org") support@purewallet.org
               span {{$t('联系我们_1')}}
     .footer-view
       .footer-info
