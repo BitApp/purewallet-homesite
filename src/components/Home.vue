@@ -102,10 +102,10 @@ export default {
 .home
   width 100%
   min-width 1200px
-  height 100%
+  min-height 900px
   display flex
   flex-direction column
-  margin-bottom -150px
+  flex 1
   .center-content
     width 100%
     flex 1

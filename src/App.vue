@@ -111,13 +111,15 @@ export default {
   text-align center
   color #2c3e50
   height 100%
+  display flex
+  flex-direction column
   .header-view
     width 100%
     background #FFF
     justify-content center
     display flex
     position fixed
-    z-index 2
+    z-index 6
     .top-view
       display flex
       justify-content space-between
