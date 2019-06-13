@@ -124,7 +124,7 @@ export default {
       max-width 1200px
       width 100%
       height 60px
-      padding 0 20px
+      padding 0 10px
       .left-view
         height 60px
         display flex
@@ -139,9 +139,9 @@ export default {
         font-size 14px
         .dapp-btn
           color #6066C0
-          margin-right 20px
+          margin-right 15px
         .voice-control
-          margin-left 20px
+          margin-left 15px
           cursor pointer
         .develop
           height 60px
