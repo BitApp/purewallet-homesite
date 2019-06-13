@@ -1,18 +1,7 @@
 <template lang="pug">
   .home
-    .header-view(:class="navBarFixed == true ? 'navBarWrap' :''")
-      .left-view
-        img(src="../assets/pcimg/Logo.png" @click="dappshow = false")
-      .right-view
-        el-button.dapp-btn(type="text" @click="dappshow = true") {{$t('DApp上架申请')}}
-        el-dropdown.language(trigger="click" @command="handleCommand" @visible-change="dropShow")
-          el-button.language-text(type="text") {{language}}
-            i.icon(:class="dropshow?'el-icon-caret-bottom':'el-icon-caret-top'")
-          el-dropdown-menu(slot="dropdown")
-            el-dropdown-item(command="zh" ) 中文
-            el-dropdown-item(command="en" divided) English
     .center-view
-      .content-info(v-if="!dappshow")
+      .content-info
         .mian-bg
           .main-content
             .title PureWallet-
@@ -56,46 +45,13 @@
                 img.img(src="../assets/mimg/logo_iost.svg")
               .info-view(@click="toLink('https://iostabc.com/')")
                 img.img(src="../assets/mimg/iostabc.png")
-      .dapp-content-info(v-else)
-        .dapp-bg
-          .dapp-title {{$t('DApp上架申请')}}
-          .dapp-download
-            a.download-a(href="./static/iostabc-dapp-request.xlsx" download="iostabc-dapp-request.xlsx") {{$t('下载申请模板')}}
-          .dapp-tips 
-            div {{$t('如果您希望在PureWallet展示您的 DApp')}}
-            div
-              span {{$t('下载并填写申请模板，发邮件到')}}
-              a.emailto(href="mailto:support@iostabc.com") support@iostabc.com
-              span {{$t('联系我们_1')}}
-    .footer-view
-      .footer-info
-        .email-view
-          .support
-            .text {{$t('技术支持')}}
-            .text-email support@purewallet.org
-          .cooperation
-            .text {{$t('商务合作')}}
-            .text-email support@purewallet.org
-        .contact-way
-          .text {{$t('联系我们')}}
-          .way-view
-            .contact-item(v-for="(item,index) in contactInfo" :key="index" @click="toLink(item.link)")
-              img.img(:src="item.img")
-        .line-view
-        .filing-view
-          .name {{$t('深圳市毕应科技有限公司')}}
-    .mask-view(v-show="dialogVisible" @click="close")
-      img(src="../assets/pcimg/wechat_qrcode.png")
+      
 </template>
 <script>
 export default {
   name: 'HomeM',
   data () {
     return {
-      dialogVisible:false,
-      dropshow: false,
-      dappshow: false,
-      language: /zh/i.test(sessionStorage.getItem('language'))? '中文':'English',
       contactInfo:[
         {
           img: require('../assets/mimg/wechat_hover.png'),
@@ -118,72 +74,21 @@ export default {
           link:'https://github.com/BitApp'
         }
       ],
-      navBarFixed: false
     }
   },
-  mounted () {
-    // 事件监听滚动条
-    window.addEventListener('scroll', this.watchScroll)
-  },
   methods:{
-    watchScroll (){
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      if (scrollTop > 10) {
-        this.navBarFixed = true
-      } else {
-        this.navBarFixed = false
-      }
-    },
     toLink(url){
-      if (/wechat_qrcode/i.test(url)) {
-        this.dialogVisible = true
-        return
-      }
       window.open(url,"_blank")
     },
-    dropShow (show) {
-      this.dropshow = show
-    },
-    handleCommand(command){
-      if (sessionStorage.getItem('language') == command) {
-        return
-      }
-      sessionStorage.setItem('language',command)
-      window.location.reload()
-    },
-    close(){
-      this.dialogVisible = false
-    },
+    
   }
 }
 </script>
 <style lang="stylus" scoped>
-.navBarWrap 
-  box-shadow 0 1px 4px 0 rgba(96,102,192,0.10)
 .home
   width 100%
-  height 100%
   background-color #ffffff
-  .header-view
-    height 44px
-    width 100%
-    display flex
-    top 0px
-    position fixed
-    justify-content space-between
-    align-items center
-    background-color #FFF
-    .left-view
-      height 24px
-      margin-left 15px
-      >img 
-        height 100%
-    .right-view
-      margin-right 15px
-      .dapp-btn
-        margin-right 20px
-      .develop
-        margin-right 60px
+  
   .center-view
     padding 85px 0px 0px
     text-align left 
@@ -208,7 +113,7 @@ export default {
             font-size 14px
             line-height 22px
           .info-img
-            width 420px
+            width 400px
             margin-top 45px
             margin-left -50px
           .video
@@ -266,86 +171,6 @@ export default {
                 height 20px
             .info-view:last-child
               margin-right 0
-    .dapp-content-info 
-      width 100%
-      height 100%
-      margin-top -80px
-      height 600px
-      .dapp-bg
-        height 100%
-        display flex
-        justify-content center 
-        align-items center
-        flex-direction column
-        background-image url('../assets/mimg/download_bg.png')
-        background-size 100% 100%
-        background-repeat no-repeat
-        background-position bottom  
-        color #FFF  
-        .dapp-title
-          margin-bottom 30px
-          font-size 36px  
-        .dapp-download
-          .download-a
-            color #52525C
-            text-decoration none 
-            background-color #FFF
-            line-height 40px
-            padding 10px 40px
-            border-radius 20px
-        .dapp-tips
-          margin-top 20px
-          font-size 14px
-          padding 0 20px
-          text-align center
-          line-height 25px
-          .emailto
-            color #409EFF
-            text-decoration none 
-  .footer-view          
-    background #52525C
-    font-size 12px
-    color #FFFFFF
-    .footer-info
-      padding 30px 30px 0px
-      .email-view
-        display flex
-        justify-content space-between
-        text-align left 
-        .text-email
-          margin-top 15px
-      .contact-way
-        text-align left 
-        margin-top 25px
-        .way-view
-          display flex
-          margin-top 15px
-          .contact-item
-            margin-right 20px
-            .img
-              height 36px
-          .contact-item:last-child
-            margin-right 0
-      .line-view
-        opacity 0.15
-        height 1px
-        background-color #FFFFFF
-        margin-top 25px
-      .filing-view
-        .name
-          line-height 50px
-  .mask-view
-    height 100%
-    top 0
-    position fixed
-    z-index 999
-    width 100%
-    display flex
-    align-items center
-    justify-content center
-    background-color rgba(0,0,0,0.5)
-    .img
-      width 80%
 
 </style>
 

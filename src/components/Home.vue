@@ -1,21 +1,7 @@
 <template lang="pug">
   .home
-    .header-view(:class="navBarFixed == true ? 'navBarWrap' :''")
-      .top-view
-        .left-view
-          img(src="../assets/pcimg/Logo.png" @click="dappshow = false")
-        .right-view
-          el-button.dapp-btn(type="text" @click="dappshow = true") {{$t('DApp上架申请')}}
-          el-dropdown.language(trigger="click" @command="handleCommand" @visible-change="dropShow")
-            el-button.language-text(type="text") {{language}}
-              i.icon(:class="dropshow?'el-icon-caret-bottom':'el-icon-caret-top'")
-            el-dropdown-menu(slot="dropdown")
-              el-dropdown-item(command="zh" ) 中文
-              el-dropdown-item(command="en" divided) English
-          img.voice-control(id="voice" src="../assets/pcimg/voice.svg" style="" width=14 @click="mute")
-          img.voice-control(id="mute" src="../assets/pcimg/mute.svg" style="display:none" width=14 @click="voice")
     .center-content
-      .center-info(v-if="!dappshow")
+      .center-info
         .mainbg
           .maincontent
             .left
@@ -40,47 +26,13 @@
             .link-view
               .info-view(v-for="(item,index) in linkInfo" :key="index" @click="toLink(item.link)")
                 img.img(:src="item.img")
-      .dapp-content(v-else)
-        .dapp-bg
-          .dapp-title {{$t('DApp上架申请')}}
-          .dapp-download
-            a.download-a(href="./static/iostabc-dapp-request.xlsx" download="iostabc-dapp-request.xlsx") {{$t('下载申请模板')}}
-          .dapp-tips 
-            span {{$t('如果您希望在PureWallet展示您的 DApp，下载并填写申请模板，发邮件到')}}
-            a.emailto(href="mailto:support@iostabc.com") support@iostabc.com
-            span {{$t('联系我们_1')}}
-    .footer 
-      .foot-content
-        .contact-view
-          .support
-            p {{$t('技术支持')}}
-            p support@purewallet.org
-          .cooperation
-            p {{$t('商务合作')}}
-            p support@purewallet.org
-          .contact
-            p {{$t('联系我们')}}
-            .contact-way
-              el-popover.contact-item(placement="top" width="100" v-model="visible")
-                img.qrcode(src="../assets/pcimg/wechat_qrcode.png")
-                .contact-item.wechat( slot="reference")
-              .contact-item.weibo(@click="toLink('https://www.weibo.com/bitapp')")
-              .contact-item.twitter(@click="toLink('https://twitter.com/PureWallet')")
-              .contact-item.reddit(@click="toLink('https://www.reddit.com/user/BitApp')")
-              .contact-item.github(@click="toLink('https://github.com/BitApp')")
-        .line
-        .filing-view  
-          .name {{$t('深圳市毕应科技有限公司')}}
+    
 </template>
 <script>
 export default {
   name: 'Home',
   data () {
     return {
-      visible: false,
-      dropshow: false,
-      dappshow: false,
-      language: /zh/i.test(sessionStorage.getItem('language'))? '中文':'English',
       productInfo:[
         {
           img:require('../assets/pcimg/google_play.png'),
@@ -127,48 +79,13 @@ export default {
           link: 'https://iostabc.com/'
         }
       ],
-      navBarFixed:false
     }
   },
-  mounted () {
-    // 事件监听滚动条
-    window.addEventListener('scroll', this.watchScroll)
-  },
   methods:{
-    watchScroll (){
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      if (scrollTop > 10) {
-        this.navBarFixed = true
-      } else {
-        this.navBarFixed = false
-      }
-    },
+    
     toLink(url){
       window.open(url,"_blank")
     },
-    dropShow (show) {
-      this.dropshow = show
-    },
-    handleCommand(command){
-      if (sessionStorage.getItem('language') == command) {
-        return
-      }
-      sessionStorage.setItem('language',command)
-      window.location.reload()
-    },
-    dapp(){
-
-    },
-    mute(){
-      document.getElementById('mute').style.display = ''
-      document.getElementById('voice').style.display = 'none'
-      document.getElementById('video').muted = true
-    },
-    voice(){
-      document.getElementById('voice').style.display = ''
-      document.getElementById('mute').style.display = 'none'
-      document.getElementById('video').muted = false
-    }
   }
 }
 </script>
@@ -178,14 +95,9 @@ export default {
 .el-dropdown-menu__item
   width 100px
   text-align left 
-.navBarWrap 
-  box-shadow 0 1px 8px 0 rgba(96,102,192,0.10)
-.qrcode
-  width 150px
 .el-dropdown-menu__item:not(.is-disabled):hover 
   background-color #F5F7FA
   color #6066C0
-
 
 .home
   width 100%
@@ -193,47 +105,7 @@ export default {
   height 100%
   display flex
   flex-direction column
-  .header-view
-    width 100%
-    min-width 1200px
-    background #FFF
-    justify-content center
-    display flex
-    position fixed
-    .top-view
-      display flex
-      justify-content space-between
-      width 1200px
-      height 70px
-      .left-view
-        height 70px
-        display flex
-        justify-content center
-        align-items center
-        >img 
-          height 48px
-          cursor pointer
-      .right-view
-        display flex
-        width 254px
-        justify-content space-between
-        font-size 14px
-        .dapp-btn
-          color #6066C0
-        .voice-control
-          cursor pointer
-        .develop
-          height 70px
-          color #52525C
-        .develop:hover
-          color #6066C0
-        .language
-          color #6066C0
-          .language-text
-            height 70px
-            color #6066C0
-            .icon
-              margin-left 20px
+  margin-bottom -150px
   .center-content
     width 100%
     flex 1
@@ -367,105 +239,5 @@ export default {
               box-shadow 0 0 8px 0 rgba(96,102,192,0.20)
               border-radius 12px
               cursor pointer
-  .dapp-content  
-    width 100%
-    height  100%
-    .dapp-bg
-      height 100%
-      display flex
-      justify-content center 
-      flex-direction column
-      background-image url('../assets/pcimg/download_bg.png')
-      background-size 100% 100%
-      background-repeat no-repeat
-      background-position bottom  
-      color #FFF  
-      .dapp-title
-        margin-bottom 30px
-        font-size 36px  
-      .dapp-download
-        .download-a
-          color #52525C
-          text-decoration none 
-          background-color #FFF
-          line-height 40px
-          padding 10px 40px
-          border-radius 20px
-      .dapp-tips
-        margin-top 20px
-        font-size 14px
-        .emailto
-          color #409EFF
-          text-decoration none 
-  .footer
-    background-color #52525C
-    .foot-content
-      display flex
-      justify-content center
-      align-items center
-      flex-direction column
-      .contact-view
-        display flex
-        height 110px
-        justify-content center
-        align-items center
-        text-align left
-        font-size 14px
-        color #FFFFFF
-        .support
-          margin-right 80px
-        .cooperation
-          margin-right 80px
-        .contact
-          .contact-way
-            .contact-item
-              height 30px
-              width 30px
-              display inline-block
-              background-size 30px 30px
-              margin-right 16px
-              cursor pointer
-            .wechat
-              background-image url('../assets/pcimg/wechat.png')
-            .weibo
-              background-image url('../assets/pcimg/weibo.png')
-            .twitter
-              background-image url('../assets/pcimg/Twitter.png')
-            .reddit
-              background-image url('../assets/pcimg/Reddit.png')
-            .github
-              background-image url('../assets/pcimg/github.png')
-            .email
-              background-image url('../assets/pcimg/mail.png')
-            .wechat:hover
-              background-image url('../assets/pcimg/wechat_hover.png')
-            .weibo:hover
-              background-image url('../assets/pcimg/weibo_hover.png')
-            .twitter:hover
-              background-image url('../assets/pcimg/Twitter_hover.png')
-            .reddit:hover
-              background-image url('../assets/pcimg/Reddit_hover.png')
-            .github:hover
-              background-image url('../assets/pcimg/github_hover.png')
-            .email:hover
-              background-image url('../assets/pcimg/mail_hover.png')
-            .contact-item:last-child
-              margin-right 0px
-      .line
-        height 1px
-        background-color #ffffff
-        opacity 0.3
-        width 1200px
-      .filing-view
-        font-size 12px
-        color #FFFFFF
-        .filing
-          display inline-block
-          line-height 50px
-          margin-right 30px
-        .name
-          display inline-block
-          line-height 50px
-          
 </style>
 
