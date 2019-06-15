@@ -19,11 +19,13 @@
       .foot-content
         .contact-view
           .support
-            p {{$t('技术支持')}}
-            p support@purewallet.org
+            p {{$t('帮助')}}
+            p
+              a.contact-item(:href="'https://help.purewallet.org/'+(/english/i.test(language)?'en/iostaccount/':'zh/getstarted/')",target="_blank") {{$t('PureWallet帮助中心')}}
           .cooperation
-            p {{$t('商务合作')}}
-            p support@purewallet.org
+            p {{$t('合作')}}
+            p 
+              a.contact-item(href="mailto:support@purewallet.org") support@purewallet.org
           .contact
             p {{$t('联系我们')}}
             .contact-way
@@ -174,8 +176,12 @@ export default {
         color #FFFFFF
         .support
           margin-right 80px
+          .contact-item
+            color white
         .cooperation
           margin-right 80px
+          .contact-item
+            color white
         .contact
           .contact-way
             .contact-item
