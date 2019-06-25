@@ -45,6 +45,9 @@
                 img.img(src="../assets/mimg/logo_iost.svg")
               .info-view(@click="toLink('https://iostabc.com/')")
                 img.img(src="../assets/mimg/iostabc.png")
+            .link-view
+              .info-view(@click="toLink('https://www.coinex.org/')")
+                img.img(src="../assets/mimg/coinex.svg")
       
 </template>
 <script>

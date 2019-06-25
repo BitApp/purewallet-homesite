@@ -77,6 +77,10 @@ export default {
         {
           img: require('../assets/pcimg/iostabc.png'),
           link: 'https://iostabc.com/'
+        },
+        {
+          img: require('../assets/pcimg/coinex.svg'),
+          link: 'https://www.coinex.org/'
         }
       ],
     }
