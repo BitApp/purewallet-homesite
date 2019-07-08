@@ -36,6 +36,7 @@
               .contact-item.twitter(@click="toLink('https://twitter.com/PureWallet')")
               .contact-item.reddit(@click="toLink('https://www.reddit.com/user/BitApp')")
               .contact-item.github(@click="toLink('https://github.com/BitApp')")
+              .contact-item.telegram(@click="toLink('https://t.me/purewalletgroup')")
         .line
         .filing-view  
           .name {{$t('深圳市毕应科技有限公司')}}
@@ -87,6 +88,9 @@ export default {
       }
       sessionStorage.setItem('language',command)
       window.location.reload()
+    },
+    toLink(url){
+      window.open(url,"_blank")
     },
     mute(){
       document.getElementById('mute').style.display = ''
@@ -203,6 +207,8 @@ export default {
               background-image url('./assets/pcimg/github.png')
             .email
               background-image url('./assets/pcimg/mail.png')
+            .telegram
+              background-image url('./assets/pcimg/telegram.svg')
             .wechat:hover
               background-image url('./assets/pcimg/wechat_hover.png')
             .weibo:hover
@@ -215,6 +221,8 @@ export default {
               background-image url('./assets/pcimg/github_hover.png')
             .email:hover
               background-image url('./assets/pcimg/mail_hover.png')
+            .telegram:hover
+              background-image url('./assets/pcimg/telegram_hover.svg')
             .contact-item:last-child
               margin-right 0px
       .line
