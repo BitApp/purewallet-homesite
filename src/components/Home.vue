@@ -55,16 +55,12 @@ export default {
       ],
       linkInfo: [
         {
-          img: require('../assets/pcimg/wormhole.png'),
-          link: 'https://wormhole.cash/'
+          img: require('../assets/pcimg/viabtc.png'),
+          link: 'https://www.viabtc.com/'
         },
         {
           img: require('../assets/pcimg/DEx.top.png'),
           link: 'https://dex.top/'
-        },
-        {
-          img: require('../assets/pcimg/viabtc.png'),
-          link: 'https://www.viabtc.com/'
         },
         {
           img: require('../assets/pcimg/BCH_Club.png'),
@@ -77,6 +73,10 @@ export default {
         {
           img: require('../assets/pcimg/iostabc.png'),
           link: 'https://iostabc.com/'
+        },
+        {
+          img: require('../assets/pcimg/ft-logo.png'),
+          link: 'https://www.fractalproject.com/'
         },
         {
           img: require('../assets/pcimg/coinex.svg'),

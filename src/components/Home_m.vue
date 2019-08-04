@@ -31,13 +31,11 @@
           .link
             .title {{$t('合作伙伴')}}
             .link-view
-              .info-view(@click="toLink('https://wormhole.cash/')")
-                img.img.wormhole-img(src="../assets/mimg/wormhole.png")
-              .info-view(@click="toLink('https://dex.top/')")
-                img.img(src="../assets/mimg/DEx.top.png")
-            .link-view
               .info-view(@click="toLink('https://www.viabtc.com/')")
                 img.img(src="../assets/mimg/viabtc.png")
+            .link-view
+              .info-view(@click="toLink('https://dex.top/')")
+                img.img(src="../assets/mimg/DEx.top.png")
               .info-view(@click="toLink('https://bch.club/')")
                 img.img(src="../assets/mimg/BCH_Club.png")
             .link-view
@@ -46,6 +44,8 @@
               .info-view(@click="toLink('https://iostabc.com/')")
                 img.img(src="../assets/mimg/iostabc.png")
             .link-view
+              .info-view(@click="toLink('https://www.fractalproject.com/')")
+                img.img(src="../assets/mimg/ft-logo.png")
               .info-view(@click="toLink('https://www.coinex.org/')")
                 img.img(src="../assets/mimg/coinex.svg")
       
